@@ -1,5 +1,3 @@
-import logging
-
 class Tile:
     """
     Base class for board tiles.
