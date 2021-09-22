@@ -228,6 +228,40 @@ class OnEdge(unittest.TestCase):
 
         self.assertEqual(board.on_edge(pos), 'ne')
 
+class Moving(unittest.TestCase):
+    def test_move_to_empty_on_coords(self):
+        board = Board((10,9))
+        origin_tile = board.get_tile((3,3))
+        origin_tile.attribute = True
+        board.move("attribute", (3,3), (5,6))
+        
+
+        self.assertEqual(origin_tile.attribute, None)
+        self.assertEqual(board.get_tile((5,6)).attribute, True)
+
+    def test_move_to_empty_on_tiles(self):
+        board = Board((10,9))
+        origin_tile = board.get_tile((3,3))
+        origin_tile.attribute = True
+        board.move("attribute", origin_tile, (5,6))
+        
+
+        self.assertEqual(origin_tile.attribute, None)
+        self.assertEqual(board.get_tile((5,6)).attribute, True)
+
+    def test_switch(self):
+        board = Board((10,9))
+        from_tile = board.get_tile((3,3))
+        from_tile.attribute = "a"
+
+        to_tile = board.get_tile((5,5))
+        to_tile.attribute = "b"
+
+        board.switch("attribute", from_tile, to_tile)
+        
+
+        self.assertEqual(from_tile.attribute, "b")
+        self.assertEqual(to_tile.attribute, "a")
 
 
 if __name__ == '__main__':

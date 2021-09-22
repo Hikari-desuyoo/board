@@ -153,6 +153,46 @@ class Board:
         
         return found
 
+    def move(self, attr_name, from_loc, to_loc):
+        """
+        Method to move an attribute from a tile to another.
+
+        It does not delete any attributes, just replace their value to None if necesssary
+
+        Parameters: 
+            attr_name (str): Attribute's name
+            from_loc (tuple or Tile object): Tile or coordinate where the attribute is originally located
+            to_loc (tuple or Tile object): Tile or coordinate where the attribute is being moved to
+        """
+        if type(from_loc) is tuple: from_loc = self.get_tile(from_loc)
+        if type(to_loc) is tuple: to_loc = self.get_tile(to_loc)
+
+        attr_value = getattr(from_loc, attr_name)
+        setattr(from_loc, attr_name, None)
+        setattr(to_loc, attr_name, attr_value)
+
+    def switch(self, attr_name, first_loc, second_loc):
+        """
+        Method to switch an attribute between tiles.
+
+        It does not delete any attributes, just replace their value to None if necesssary
+
+        Parameters: 
+            attr_name (str): Attribute's name
+            first_loc (tuple or Tile object): Tile or coordinate
+            second_loc (tuple or Tile object): Tile or coordinate
+        """
+        if type(first_loc) is tuple: first_loc = self.get_tile(first_loc)
+        if type(second_loc) is tuple: second_loc = self.get_tile(second_loc)
+
+        attr_value1 = getattr(first_loc, attr_name)
+        attr_value2 = getattr(second_loc, attr_name)
+        setattr(first_loc, attr_name, attr_value2)
+        setattr(second_loc, attr_name, attr_value1)
+
+
+
+
     @staticmethod
     def coords_pattern(center_coords, pattern="sqr", reach=1, exclude_center = False):
         """
