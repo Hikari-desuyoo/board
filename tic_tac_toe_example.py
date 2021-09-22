@@ -34,6 +34,15 @@ class Game:
     def pass_turn(self):
         self.turn = not self.turn
 
+    def check_draw(self):
+        is_tile_filled = lambda tile: tile.player
+        filled_tiles = self.board.filter_tiles(key_func = is_tile_filled)
+        
+        if len(filled_tiles) == 9:
+            return True
+        return False
+
+
     def request_move_from_user(self):
         valid_answer = False
         while not valid_answer:
@@ -79,7 +88,10 @@ class Game:
         while True:
             self.request_move_from_user()
             if self.check_win():
-                print("You win!")
+                print(f"{self.get_player()} wins!")
+                return
+            if self.check_draw():
+                print(f"Draw")
                 return
             self.pass_turn()
         
