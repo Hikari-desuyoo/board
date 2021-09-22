@@ -67,12 +67,13 @@ class Board:
         return self.board
     
 
-    def get_tile(self, *coords):
+    def get_tile(self, *coords, allow_negative=False):
         """
         Method to get a board's tile by it's coordinates
 
         Parameters: 
             *coords: The coordinate to check. May be a single tuple or two arguments representing it.
+            allow_negative (bool): Whether negative coords should raie an error or not.
 
         Returns:
             Tile-based object: The corresponding tile.
@@ -81,7 +82,7 @@ class Board:
             coords=coords[0]
         
         for num in coords:
-            if num<0:
+            if num<0 and (not allow_negative):
                 raise IndexError
         return self.board[coords[1]][coords[0]]
 
