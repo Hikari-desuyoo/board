@@ -227,11 +227,11 @@ class Board:
         #type isnt square
         if '-' in pattern:
             for j in range(left, right+1):
-                inrange_coords.add((cx,j))
+                inrange_coords.add((j, cy))
 
         if '|' in pattern:
             for i in range(top, bottom+1):
-                inrange_coords.add((i,cy))
+                inrange_coords.add((cx, i))
 
         if '\\' in pattern:
             j_value = left

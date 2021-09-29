@@ -181,9 +181,9 @@ class RangeObjects(unittest.TestCase):
         self.assertEqual(
             coords_pattern,
             {
-                (1,2),
+                (2,1),
                 (2,2),
-                (3,2),
+                (2,3),
             }
         )
 
@@ -193,7 +193,7 @@ class RangeObjects(unittest.TestCase):
         self.assertEqual(
             coords_pattern,
             {
-                (2,1), (2,2), (2,3),
+                (1,2), (2,2), (3,2),
             }
         )
 
