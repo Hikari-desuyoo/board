@@ -43,19 +43,19 @@ class Board:
             coords=coords[0]
 
         if not self.is_coords_valid(coords):
-            raise Exception
+            raise Exception('coord do not exist')
 
         direction = ""
 
         cx, cy = coords
-        if cx == 0:
+        if cy == 0:
             direction += "n"
-        elif cx == len(self.board)-1:
+        elif cy == len(self.board)-1:
             direction += "s"
 
-        if cy == 0:
+        if cx == 0:
             direction += "w"
-        elif cy == len(self.board[0])-1:
+        elif cx == len(self.board[0])-1:
             direction += "e"
 
         return direction
@@ -112,8 +112,8 @@ class Board:
         if len(coords)==1:
             coords=coords[0]
 
-        cx_valid = coords[0] in range(0, len(self.board))
-        cy_valid = coords[1] in range(0, len(self.board[0]))
+        cx_valid = coords[0] in range(0, len(self.board[0]))
+        cy_valid = coords[1] in range(0, len(self.board))
         return cx_valid and cy_valid
             
 

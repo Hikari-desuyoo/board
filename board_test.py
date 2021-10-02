@@ -199,31 +199,31 @@ class RangeObjects(unittest.TestCase):
 
 class OnEdge(unittest.TestCase):
     def test_up(self):
-        pos = (0,2)
+        pos = (2,0)
         board = Board((10,9))
 
         self.assertEqual(board.on_edge(pos), 'n')
 
     def test_down(self):
-        pos = (8,5)
+        pos = (5,8)
         board = Board((10,9))
 
         self.assertEqual(board.on_edge(pos), 's')
 
     def test_right(self):
-        pos = (5,9)
+        pos = (9,5)
         board = Board((10,9))
 
         self.assertEqual(board.on_edge(pos), 'e')
 
     def test_left(self):
-        pos = (5,0)
+        pos = (0,5)
         board = Board((10,9))
 
         self.assertEqual(board.on_edge(pos), 'w')
 
     def test_double(self):
-        pos = (0,9)
+        pos = (9,0)
         board = Board((10,9))
 
         self.assertEqual(board.on_edge(pos), 'ne')
